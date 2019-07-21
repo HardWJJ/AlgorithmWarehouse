@@ -2,6 +2,6 @@
 /bin/
 /test/
 /idea/
-.idea
+*.idea
 out
-.iml
+*.iml
