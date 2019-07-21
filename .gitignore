@@ -1,8 +1,8 @@
+*idea/
+*.idea
+out
+*.iml
 /target/
 /bin/
 /test/
 /idea/
-*.idea
-out
-*.iml
-src/
