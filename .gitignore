@@ -1,7 +1,9 @@
 .idea
-*.idea
 *.iml
-/target/
+*.project
+*.classpath
+.settings
+out
+gen
 /bin/
-/test/
-/idea/
+/target/
