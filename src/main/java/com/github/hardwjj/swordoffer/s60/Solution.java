@@ -1,4 +1,4 @@
-package com.github.hardwjj.swordoffer.sixty;
+package com.github.hardwjj.swordoffer.s60;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

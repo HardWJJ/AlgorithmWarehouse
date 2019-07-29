@@ -1,4 +1,4 @@
-package com.github.hardwjj.swordoffer.fiftythree;
+package com.github.hardwjj.swordoffer.s53;
 
 public class Solution {
 
