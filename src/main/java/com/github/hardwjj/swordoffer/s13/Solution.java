@@ -1,5 +1,13 @@
 package com.github.hardwjj.swordoffer.s13;
 
+/**
+ * 题： 机器人的运动范围
+ * 地上有一个 m 行和 n 列的方格。一个机器人从坐标 (0, 0) 的格子开始移动，每一次只能向左右上下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于 k 的格子。
+ * 例如，当 k 为 18 时，机器人能够进入方格 (35,37)，因为 3+5+3+7=18。但是，它不能进入方格 (35,38)，因为 3+5+3+8=19。请问该机器人能够达到多少个格子？
+ *
+ * 解：
+ * 使用深度优先搜索（Depth First Search，DFS）方法进行求解。
+ */
 public class Solution {
 
     private static final int[][] next = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
@@ -13,8 +21,10 @@ public class Solution {
         this.rows = rows;
         this.cols = cols;
         this.threshold = threshold;
+        // 提前计算边界
         initDigitSum();
         boolean[][] marked = new boolean[rows][cols];
+        // 深度优先搜索
         dfs(marked, 0, 0);
         return cnt;
     }
@@ -24,12 +34,15 @@ public class Solution {
             return;
         }
 
+
         marked[r][c] = true;
         if(this.digitSum[r][c] > this.threshold){
             return;
         }
+        // 符合条件
         cnt++;
         for (int[] n : next) {
+            // 深度优先搜索
             dfs(marked, r + n[0], c + n[1]);
         }
     }
@@ -45,6 +58,7 @@ public class Solution {
         }
         this.digitSum = new int[rows][cols];
 
+        // 提前计算所有值得边界
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
                 this.digitSum[i][j] = digitSumOne[i] + digitSumOne[j];
