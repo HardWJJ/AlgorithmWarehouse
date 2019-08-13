@@ -5,20 +5,37 @@ package com.github.hardwjj.swordoffer.s16;
  * 给定一个 double 类型的浮点数 base 和 int 类型的整数 exponent，求 base 的 exponent 次方。
  *
  * 解：
- *  解1：
- *  n&(n-1)
- *  该位运算去除 n 的位级表示中最低的那一位。
- *  n       : 10110100
- *  n-1     : 10110011
- *  n&(n-1) : 10110000
- * 时间复杂度：O(M)，其中 M 表示 1 的个数。
+ *  x 代表 base，n 代表 exponent。
  *
- *  解2：
- *  Integer.bitCount()
+ *  x^n{
+ *      (x * x)^(n / 2)             n % 2 = 0
+ *      x * (x * x)^(n / 2)         n % 2 = 1
+ *  }
  *
  */
 public class Solution {
     public double Power(double base, int exponent) {
-        
+
+        if(exponent == 0){
+            return 1;
+        }
+        if(exponent == 1){
+            return base;
+        }
+
+        boolean isNegative = false;
+        if(exponent < 0){
+            exponent = -exponent;
+            isNegative = true;
+        }
+
+        // 递归缩小范围
+        double pow = Power(base * base, exponent / 2);
+        // 指数不为偶数需要再与一个基数相乘
+        if(exponent % 2 != 0){
+            pow = pow * base;
+        }
+        // 指数的正负
+        return isNegative? 1 / pow : pow;
   }
 }
