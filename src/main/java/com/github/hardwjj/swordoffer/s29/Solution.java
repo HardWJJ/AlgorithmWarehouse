@@ -18,6 +18,7 @@ public class Solution {
        }
        ArrayList<Integer> list = new ArrayList<>();
        int r1 = 0, r2 = matrix.length - 1, c1 = 0, c2 = matrix[0].length - 1;
+       // 判断边界
        while (r1 <= r2 && c1 <= c2){
 
            for (int i = c1; i <= c2; i++) {
@@ -28,12 +29,14 @@ public class Solution {
                list.add(matrix[i][c2]);
            }
 
+           // 判断是否仅剩下一行
            if(r1 != r2){
                for (int i = c2 - 1; i >= c1; i--) {
                     list.add(matrix[r2][i]);
                }
            }
 
+           // 判断是否仅剩下一列
            if(c1 != c2){
                for (int i = r2 - 1; i >= r1 + 1; i--) {
                     list.add(matrix[i][r1]);
