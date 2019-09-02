@@ -1,4 +1,4 @@
-package com.github.hardwjj.sort.bubble;
+package com.github.hardwjj.sort;
 
 import java.util.Arrays;
 
