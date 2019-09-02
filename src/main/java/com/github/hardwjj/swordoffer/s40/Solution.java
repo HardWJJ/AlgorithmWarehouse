@@ -27,7 +27,8 @@ public class Solution {
     /**
      * 快速选择
      * 复杂度：O(N) + O(1)
-     * 进行大约一次快排中的选分隔partition操作约等于O(1)，遍历数组构造返回值O(N)
+     *  n+n/2+n/4+n/8+…+1 ≈ O(n)
+     * 进行大约一次快排中的选分隔partition操作约等于O(n)，遍历数组构造返回值O(n)，原地交互时间O(1)
      */
     public ArrayList<Integer> GetLeastNumbers_Solution(int [] nums, int k) {
         ArrayList<Integer> ret = new ArrayList<>();
