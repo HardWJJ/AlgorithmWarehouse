@@ -12,7 +12,7 @@ package com.github.hardwjj.swordoffer.s49;
  *      最优子结构，第n个丑数与第n - 1个丑数都能快速得出
  */
 public class Solution {
-    public int GetUglyNumber_Solution(int index) {
+    public static int GetUglyNumber_Solution(int index) {
         if(index <= 6){
             return index;
         }
@@ -34,5 +34,9 @@ public class Solution {
             }
         }
         return dp[index - 1];
+    }
+
+    public static void main(String[] args) {
+        GetUglyNumber_Solution(8);
     }
 }
