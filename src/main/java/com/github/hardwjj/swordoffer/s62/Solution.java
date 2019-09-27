@@ -26,6 +26,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println( LastRemaining_Solution(6, 3));
+        System.out.println( LastRemaining_Solution(5, 2));
     }
 }
