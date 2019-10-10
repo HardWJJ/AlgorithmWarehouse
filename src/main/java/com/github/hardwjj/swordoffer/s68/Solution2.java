@@ -1,12 +1,12 @@
 package com.github.hardwjj.swordoffer.s68;
 
 /**
- * 题：树中两个节点的最低公共祖先（二叉查找树）
+ * 题：树中两个节点的最低公共祖先（普通二叉树）
  *
- * 二叉查找树中，两个节点 p, q 的公共祖先 root 满足 root.val >= p.val && root.val <= q.val。
+ * 在左右子树中查找是否存在 p 或者 q，如果 p 和 q 分别在两个子树中，那么就说明根节点就是最低公共祖先。
  *
  * 解题思路：
- *  递归求解，根据左右节点的比较值方向进行搜索
+ *  递归左右节点，求出最低公共节点
  */
 public class Solution2 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -14,7 +14,7 @@ public class Solution2 {
         if(root == null || p == root || q == root){
             return root;
         }
-
+        // 递归左右节点
         TreeNode left = lowestCommonAncestor(root.left, p , q);
         TreeNode right =  lowestCommonAncestor(root.right, p, q);
 
