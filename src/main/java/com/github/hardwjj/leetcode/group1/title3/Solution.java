@@ -24,10 +24,13 @@ class Solution {
             char ci = s.charAt(i);
             char cj = s.charAt(j);
             if(!vowels.contains(ci)){
+                // 按照原来复制
                 chars[i++] = ci;
             }else if(!vowels.contains(cj)){
+                // 按照原来复制
                 chars[j--] = cj;
             }else {
+                // 元音字母反转
                 chars[i++] = cj;
                 chars[j--] = ci;
             }
