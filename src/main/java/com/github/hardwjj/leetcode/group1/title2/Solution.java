@@ -1,7 +1,7 @@
 package com.github.hardwjj.leetcode.group1.title2;
 
 /**
- * 题：双指针：   1. 两数平方和
+ * 题：双指针：   2. 两数平方和
  *     633. Sum of Square Numbers (Easy)
  *
  * Input: 5
