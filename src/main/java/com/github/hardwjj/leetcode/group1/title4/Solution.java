@@ -7,9 +7,10 @@ package com.github.hardwjj.leetcode.group1.title4;
  * Input: "abca"
  * Output: True
  * Explanation: You could delete the character 'c'.
+ * 题目描述：可以删除一个字符，判断是否能构成回文字符串。
  *
  * 解题思路：
- *   题目描述：可以删除一个字符，判断是否能构成回文字符串。
+ * 初始化两个指针，两个指针向中间移动，不等时去掉一个字符后再判断是否回文
  */
 class Solution {
 
