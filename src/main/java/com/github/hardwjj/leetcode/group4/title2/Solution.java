@@ -32,8 +32,10 @@ class Solution {
         while (low <= high) {
              mid = low + ((high - low) >> 1);
             if (letters[mid] > target) {
+                // 符合退出
                 if(mid == 0 || letters[mid - 1] <= target){
                     break;
+                // 不是第一个继续缩小范围
                 }else {
                     high = mid - 1;
                 }
