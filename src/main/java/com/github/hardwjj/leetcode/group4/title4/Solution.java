@@ -32,4 +32,10 @@ public class Solution {
         }
         return low;
     }
+
+    private boolean isBadVersion(int i) {
+        return true;
+    }
+
+
 }
