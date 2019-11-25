@@ -37,10 +37,11 @@ class Solution {
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             if(c == '+' || c == '-' || c == '*') {
-                // 左区间可能的所有结果
+                // 左区间可能的所有结果，以区间为边界进行划分
                 List<Integer> left = diffWaysToCompute(input.substring(0, i));
-                // 右区间可能的所有结果
+                // 右区间可能的所有结果，以区间为边界进行划分
                 List<Integer> right = diffWaysToCompute(input.substring(i + 1));
+                // 遍历所有可能的结果进行运算
                 for (int l : left) {
                     for (int r : right) {
                         switch (c){
