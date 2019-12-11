@@ -1,6 +1,11 @@
 package com.github.hardwjj.leetcode.group6.title2;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * 题：搜索：279. 组成整数的最小平方数数量 （力扣）
  *
@@ -23,4 +28,57 @@ package com.github.hardwjj.leetcode.group6.title2;
  */
 class Solution {
 
+    public static int numSquares(int n) {
+        List<Integer> squares = generateSquares(n);
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] marked = new boolean[n + 1];
+        queue.add(n);
+        marked[n] = true;
+        int level = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            level++;
+            while (size-- > 0) {
+                int cur = queue.poll();
+                for (Integer square : squares) {
+                    int next = cur - square;
+                    // 不符合，提前退出
+                    if(next < 0) {
+                        break;
+                    }
+                    // 刚好符合，返回
+                    if(next == 0) {
+                        return level;
+                    }
+                    // 如果已被选择则放弃
+                    if(marked[next]) {
+                        continue;
+                    }
+                    marked[next] = true;
+                    // 存放下一级遍历的节点
+                    queue.add(next);
+                }
+            }
+        }
+        return level;
+    }
+
+    /**
+     * 1,4,9,...
+     */
+    private static List<Integer> generateSquares(int n) {
+        List<Integer> squares = new ArrayList<>();
+        int square = 1;
+        int diff = 3;
+        while (square <= n) {
+            squares.add(square);
+            square += diff;
+            diff += 2;
+        }
+        return squares;
+    }
+
+    public static void main(String[] args) {
+        numSquares(12);
+    }
 }
