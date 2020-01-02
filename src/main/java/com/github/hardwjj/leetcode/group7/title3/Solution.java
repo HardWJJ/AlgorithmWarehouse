@@ -1,4 +1,4 @@
-package com.github.hardwjj.leetcode.group7.ttitle3;
+package com.github.hardwjj.leetcode.group7.title3;
 
 /**
  * 题：搜索：547. 朋友圈 DFS（力扣）
