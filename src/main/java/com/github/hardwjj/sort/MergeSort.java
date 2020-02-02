@@ -48,7 +48,6 @@ public class MergeSort {
      * @param endIndex
      */
     private static void merge(int[] array, int[] tempArray, int startIndex, int mid, int endIndex){
-
         int left = startIndex;
         int right = mid + 1;
         int i = 0;
@@ -60,10 +59,12 @@ public class MergeSort {
             }
         }
 
+        // 左边还没结束
         while (left <= mid){
             tempArray[i++] = array[left++];
         }
 
+        // 右边还没结束
         while (right <= endIndex){
             tempArray[i++] = array[right++];
         }
