@@ -1,7 +1,7 @@
 package com.github.hardwjj.leetcode.group8.title1;
 
 /**
- * 题：动态规划：70. 爬楼梯 DFS（力扣）
+ * 题：动态规划 斐波那契数列：70. 爬楼梯 DFS（力扣）
  *
  * 题目描述：有 N 阶楼梯，每次可以上一阶或者两阶，求有多少种上楼梯的方法。
  *
