@@ -1,49 +1,45 @@
 package com.github.hardwjj.leetcode.group8.title17;
 
 /**
- * 题：动态规划 0-1 背包：474. 01 字符构成最多的字符串 DFS（力扣）
- * <p>
- * 在计算机界中，我们总是追求用有限的资源获取最大的收益。
- * 现在，假设你分别支配着 m 个 0 和 n 个 1。另外，还有一个仅包含 0 和 1 字符串的数组。
- * 你的任务是使用给定的 m 个 0 和 n 个 1 ，找到能拼出存在于数组中的字符串的最大数量。每个 0 和 1 至多被使用一次。
- * 注意:
- * 给定 0 和 1 的数量都不会超过 100。
- * 给定字符串数组的长度不会超过 600。
- * 示例 1:
- * 输入: Array = {"10", "0001", "111001", "1", "0"}, m = 5, n = 3
- * 输出: 4
- * 解释: 总共 4 个字符串可以通过 5 个 0 和 3 个 1 拼出，即 "10","0001","1","0" 。
- * <p>
- * 将原本动态规划所需要的二维数组再升高为多维数组
+ * 题：动态规划 0-1 背包：322 找零钱的最少硬币数 DFS（力扣）
+ * 给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
+ *
+ * 示例 1:
+ *  输入: coins = [1, 2, 5], amount = 11
+ *  输出: 3
+ *  解释: 11 = 5 + 5 + 1
+ * 示例 2:
+ *  输入: coins = [2], amount = 3
+ *  输出: -1
+ *  说明:
+ *  你可以认为每种硬币的数量是无限的。
+ *
+ *  还是可以将空间缩小为O(n)，但是因为数量限制，也就是dp[x]的值不限制，
+ *  所以可以基于最新的最优解（如果在枚举第i个物品，可以不用考虑前面基于第i个物品求得的dp[x - i]的值）来推导，不需要从后往前推导
  */
 class Solution {
-    public int findMaxForm(String[] strs, int m, int n) {
-        if (strs == null || strs.length == 0) {
+    public int coinChange(int[] coins, int amount) {
+        if(coins == null || coins.length == 0) {
+            return -1;
+        }
+        if(amount == 0) {
             return 0;
         }
-        int[][] dp = new int[m + 1][n + 1];
 
-        int zero, one;
-
-        for (String str : strs) {
-            char[] chars = str.toCharArray();
-            zero = 0;
-            one = 0;
-            for (char aChar : chars) {
-                if (aChar == '0') {
-                    zero++;
-                } else {
-                    one++;
-                }
-            }
-
-            // 类似一维数组从后往前避免之前计算好元素被覆盖
-            for (int i = m; i >= zero; i--) {
-                for (int j = n; j >= one; j--) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i - zero][j - one] + 1);
+        int[] dp = new int[amount + 1];
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; i++) {
+                if(i == coin) {
+                    // 更新最小数量
+                    dp[i] = 1;
+                } else if(dp[i] == 0 && dp[i - coin] != 0) {
+                    // 因为值需要的是最小值，该等式不能与三合并
+                    dp[i] = dp[i - coin] + 1;
+                } else if(dp[i - coin] != 0){
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
         }
-        return dp[m][n];
+        return dp[amount] == 0? -1: dp[amount];
     }
 }
