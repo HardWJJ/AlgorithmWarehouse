@@ -25,7 +25,7 @@ class Solution {
         return nums[nums.length - k];
     }
 
-    // 2 堆， 需要维护k的大的堆
+    // 2 堆， 需要维护k的小顶堆
     public int findKthLargest2(int[] nums, int k) {
         // 小顶堆
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
