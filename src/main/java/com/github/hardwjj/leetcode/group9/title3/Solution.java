@@ -1,7 +1,7 @@
 package com.github.hardwjj.leetcode.group9.title3;
 
 /**
- * 题：数学：504. 七进制数（力扣）
+ * 题：数学：504. 16 进制（力扣）
  * 给定一个整数，编写一个算法将这个数转换为十六进制数。对于负整数，我们通常使用 补码运算 方法。
  */
 public class Solution {

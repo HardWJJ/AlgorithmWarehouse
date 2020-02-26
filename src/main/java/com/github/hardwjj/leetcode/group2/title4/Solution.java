@@ -21,15 +21,12 @@ package com.github.hardwjj.leetcode.group2.title4;
 class Solution {
     public void sortColors(int[] nums) {
         int zero = -1, one = 0, two = nums.length;
-        while (one < two){
-            if(nums[one] == 0){
-                // 将 0 值放到 1 的左边
+        while (one < two) {
+            if(nums[one] == 0) {
                 swap(nums, one++, ++zero);
-            }else if(nums[one] == 2){
-                // 将 2 值放到 1 的右边，one值回到未确认新值，下标不变更
+            }else if(nums[one] == 2) {
                 swap(nums, one, --two);
             }else {
-                // 确认一个基准值，继续确认下一个
                 one++;
             }
         }
