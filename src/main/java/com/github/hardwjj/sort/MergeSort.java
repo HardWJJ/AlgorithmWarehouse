@@ -8,6 +8,8 @@ import java.util.Arrays;
  */
 public class MergeSort {
 
+    static int[] temp;
+
     /**
      * 归并排序
      *
@@ -17,62 +19,40 @@ public class MergeSort {
      * @param array
      */
     public static void sort(int[] array){
-        int[] tempArray = new int[array.length];
-        sort(array, tempArray, 0, array.length - 1);
+        temp = new int[array.length];
+        sort(array, 0, array.length - 1);
     }
 
-    /**
-     * 归并排序
-     *
-     * @param array
-     * @param tempArray
-     * @param startIndex
-     * @param endIndex
-     */
-    private static void sort(int[] array, int[] tempArray, int startIndex, int endIndex){
-        if(startIndex < endIndex){
-            int mid = startIndex + ((endIndex - startIndex) >> 1);
-            sort(array, tempArray, startIndex, mid);
-            sort(array, tempArray, mid + 1, endIndex);
-            merge(array, tempArray, startIndex, mid, endIndex);
+    private static void sort(int[] array, int l, int h) {
+        if (l >= h) {
+            return;
         }
+        int mid = l + ((h - l) >> 1);
+        sort(array, l, mid);
+        sort(array, mid + 1, h);
+        merge(array, l, mid, h);
     }
 
-    /**
-     * 归并
-     *
-     * @param array
-     * @param tempArray
-     * @param startIndex
-     * @param mid
-     * @param endIndex
-     */
-    private static void merge(int[] array, int[] tempArray, int startIndex, int mid, int endIndex){
-        int left = startIndex;
-        int right = mid + 1;
-        int i = 0;
-        while (left <= mid && right <= endIndex){
-            if(array[left] <= array[right]){
-                tempArray[i++] = array[left++];
+    public static void merge(int[] array, int l, int m, int h) {
+        int i = l, j = m + 1;
+        for (int k = l; k <= h; k++) {
+            temp[k] = array[k];
+        }
+
+        for (int k = l; k <= h; k++) {
+            if(i > m) {
+                array[k] = temp[j++];
+            }else if(j > h) {
+                array[k] = temp[i++];
+            }else if(temp[i] < temp[j]) {// 保证稳定性
+                array[k] = temp[i++];
             }else {
-                tempArray[i++] = array[right++];
+                array[k] = temp[j++];
             }
         }
-
-        // 左边还没结束
-        while (left <= mid){
-            tempArray[i++] = array[left++];
-        }
-
-        // 右边还没结束
-        while (right <= endIndex){
-            tempArray[i++] = array[right++];
-        }
-
-        for (int j = 0; j < i; j++) {
-            array[startIndex + j] = tempArray[j];
-        }
     }
+
+
 
     public static void main(String[] args) {
         int[] arr = new int[]{3, 2, 4, 5};
